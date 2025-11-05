@@ -203,15 +203,13 @@ SELECT * FROM national;
         department D ON (E.DEPT_CODE = D.DEPT_ID)
     JOIN
         location L ON (D.LOCATION_ID = L.LOCAL_CODE)
-    JOIN
-        national N ON (L.NATIONAL_CODE = N.NATIONAL_CODE)
     WHERE E.SALARY >= (
         SELECT
             AVG(SALARY)
         FROM
             employee
         WHERE
-            N.NATIONAL_CODE LIKE '%KO%'
+            L.NATIONAL_CODE LIKE '%KO%'
         );
 
 
@@ -219,7 +217,7 @@ SELECT * FROM national;
 -- 직원이 없는 부서도 함께 표시하시오. (9행)
     SELECT
         D.DEPT_TITLE AS '부서명',
-        COUNT(E.DEPT_CODE) AS '직원 수'
+        COUNT(E.EMP_ID) AS '직원 수'
     FROM
         department D
     LEFT JOIN
@@ -230,13 +228,15 @@ SELECT * FROM national;
 -- 13. 차장(J4) 이상 직급을 가진 직원과 사원(J7) 직급을 가진
 -- 직원들의 급여 합계를 비교하여 결과를 출력하시오. (SET OPERATOR 사용) (2행)
 SELECT
+    '차장 이상' AS '구분',
     SUM(SALARY) AS '급여 합계'
 FROM
     employee
 WHERE
-    JOB_CODE >= 'J4'
+    JOB_CODE <= 'J4'
 UNION ALL
 SELECT
+    '사원' AS '구분',
     SUM(SALARY)
 FROM
     employee
