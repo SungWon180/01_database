@@ -11,7 +11,11 @@ SELECT category_code, COUNT(*)
 FROM tbl_menu
 GROUP BY category_code;
 
+
 SELECT category_code
+FROM tbl_menu;
+
+SELECT *
 FROM tbl_menu;
 
 -- GROUP BY 없이 그룹 함수 사용
@@ -31,7 +35,6 @@ FROM tbl_category;
 SELECT category_code, COUNT(*), SUM(menu_price), AVG(menu_price), MAX(menu_price), MIN(menu_price)
 FROM tbl_menu
 GROUP BY category_code;
-
 -- practice 계정 --
 -- 대소 비교는 숫자, 문자, 날짜 가능
 -- 문자 :  A(소) ~ Z(대)
@@ -49,7 +52,10 @@ FROM employee;
    - 큰 그룹 내 소규모 그룹 구성
  */
 
-SELECT category_code, menu_price/*, menu_name*/, COUNT(*) -- GROUP BY 가장 끝에 작성된그룹을 기준으로 함수 수행
+SELECT *
+FROM tbl_menu;
+
+SELECT category_code, menu_price, menu_name, COUNT(*) -- GROUP BY 가장 끝에 작성된그룹을 기준으로 함수 수행
 FROM tbl_menu
 GROUP BY category_code, menu_price;
 -- 오른쪽에 작성될수록 왼쪽 그룹에 포함된 소규모 그룹
@@ -65,10 +71,10 @@ GROUP BY category_code, menu_price;
  */
 
 
-SELECT category_code, SUM(menu_price)
+SELECT category_code, SUM(menu_price) AS '가격합계'
 FROM tbl_menu
 GROUP BY category_code
-HAVING SUM(menu_price) < 50000;
+HAVING 가격합계 < 50000;
 
 /*
     WHERE   : 행 필터링
@@ -81,6 +87,9 @@ WHERE menu_price > 10000
 GROUP BY category_code
 HAVING 합계 > 50000
 ORDER BY category_code ASC;
+
+SELECT *
+FROM tbl_menu;
 
 -- ROllUP : 그룹별 중간 합계, 총 합계 조회
 SELECT
@@ -110,3 +119,5 @@ HAVING
 ORDER BY
     평균금액 ASC
 LIMIT 0,3;
+
+

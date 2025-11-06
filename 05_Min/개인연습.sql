@@ -1,110 +1,60 @@
--- tbl_menu에서 메뉴명(menu_name)과 가격(menu_price)을 조회하세요.
-
-SELECT
-    menu_name,menu_price
-FROM
-    tbl_menu;
-
--- tbl_menu에서 가격이 5,000원 이상인 메뉴를 조회하세요.
-
-SELECT
-    menu_price
-FROM
-    tbl_menu
-WHERE
-    menu_price >= 5000;
-
--- tbl_menu에서 주문 가능한(Y) 메뉴의 이름을 가격 오름차순으로 정렬해서 조회하세요.
-
-SELECT
-    menu_name,menu_price,orderable_status
-FROM
-    tbl_menu
-WHERE
-    orderable_status = 'Y';
-
--- tbl_menu에서 메뉴 가격이 7,000원 이상이고,주문 불가능한(N) 메뉴를 조회하세요.
-
-SELECT
-    menu_name,menu_price,orderable_status
-FROM
-    tbl_menu
-WHERE
-    menu_price >= 7000 && orderable_status = 'N';
--- tbl_category에서 상위 카테고리가 없는 (ref_category_code IS NULL) 카테고리의 이름을 조회하세요.
-
-SELECT
-    category_name,ref_category_code
-FROM
-    tbl_category
-WHERE
-    ref_category_code IS NULL;
-
--- tbl_menu에서 가격이 8,000원 이상이거나 카테고리 코드가 10번인 메뉴를가격 내림차순으로 정렬하세요.
-
-SELECT
-    menu_price,menu_name,category_code
-FROM
-    tbl_menu
-WHERE menu_price >= 8000 || category_code = '10'
-ORDER BY
-    category_code DESC;
--- tbl_menu에서 중복되지 않는 카테고리 코드(category_code)를 조회하세요.
-
-SELECT
-    distinct category_code
-FROM
-    tbl_menu;
-
--- tbl_menu에서 가격이 가장 비싼 메뉴 3개만 조회하세요.
-
 SELECT
     *
 FROM
-    tbl_menu
-ORDER BY
-    menu_price DESC
-LIMIT 3;
+    employee;
 
--- tbl_menu에서 메뉴 이름에 '빵'이 포함된 메뉴를 가격 오름차순으로 조회하세요.
+-- 💥문제 1️⃣
 
-SELECT
-    menu_name,menu_price
-FROM
-    tbl_menu
-WHERE
-    menu_name LIKE '%빵%'
-ORDER BY
-    menu_price ASC;
-
--- tbl_menu에서 카테고리 코드가 4, 6, 10번 중 하나이고,가격이 7,000원 이상인 메뉴를 가격 오름차순으로 조회하세요.
+-- 각 사원의 급여가 자신과 같은 직급(JOB_CODE)을 가진 사원들의 평균 급여보다 높은 사원만 조회하시오.
+-- 조회 컬럼: EMP_NAME, JOB_CODE, SALARY
 
 SELECT
-    category_code,menu_price,menu_name
+    EMP_NAME,DEPT_CODE,SALARY
 FROM
-    tbl_menu
+    employee e
 WHERE
-    (category_code = '4' || category_code = '6' || category_code = '10') && menu_price >= 7000
-ORDER BY
-    menu_price ASC;
-
--- tbl_menu에서 가격이 10,000원 이하이거나 주문 불가능한(N) 메뉴 중,메뉴명이 ‘떡’으로 끝나는 메뉴를 조회하세요.
-
-SELECT menu_price,
-       orderable_status,
-       menu_name
-FROM tbl_menu
-WHERE (menu_price <= 10000 OR orderable_status = 'N') AND menu_name LIKE '%떡';
+    e.salary > (
+    SELECT
+        AVG(e2.salary)
+    FROM
+        employee e2
+    WHERE e.JOB_CODE = e2.JOB_CODE
+    );
 
 
--- tbl_menu에서 메뉴명에 ‘김치’가 포함되지 않은 메뉴를가격 내림차순으로 5개만 조회하세요.
+-- 💥문제 2️⃣
 
+-- 자신의 부서 평균 보너스보다 보너스를 더 많이 받는 사원의 이름, 부서코드, 보너스를 조회하시오.
+-- (단, 보너스가 NULL이 아닌 사원만 비교)
 SELECT
-    menu_name,menu_price
+    EMP_NAME,DEPT_CODE,BONUS
 FROM
-    tbl_menu
+    employee e
 WHERE
-    menu_name NOT LIKE '%김치%'
-ORDER BY
-    menu_price DESC
-LIMIT 5;
+    e.BONUS > (
+        SELECT
+            AVG(e2.bonus)
+        FROM
+            employee e2
+        WHERE
+            e.DEPT_CODE = e2.DEPT_CODE
+    );
+-- 💥문제 3️⃣
+
+-- 자신과 같은 지역(LOCATION_ID)에 속한 부서들의 평균 급여보다 높은 급여를 받는 사원의 이름, 급여, 근무 지역명을 조회하시오.
+-- (힌트: employee → department → location 순으로 JOIN 후,
+-- 서브쿼리 안에서도 location_id 기준으로 비교)
+SELECT
+    EMP_NAME,SALARY
+FROM
+    employee e JOIN
+        department d ON e.DEPT_CODE = d.DEPT_ID
+
+-- 각 부서에서 가장 먼저 입사한(입사일이 가장 빠른) 사원의 이름, 입사일, 부서명을 조회하시오.
+-- (힌트: WHERE e.HIRE_DATE = (SELECT MIN(e2.HIRE_DATE) FROM employee e2 WHERE e2.DEPT_CODE = e.DEPT_CODE))
+
+-- 💥문제 5️⃣
+
+-- 자신의 급여가 전체 평균 급여보다 높고, 동시에 자기 부서의 평균 급여보다도 높은 사원을 조회하시오.
+-- 조회 컬럼: EMP_NAME, DEPT_CODE, SALARY
+-- (힌트: 서브쿼리 2개를 써야 함 — 하나는 전체 평균, 하나는 부서별 평균)

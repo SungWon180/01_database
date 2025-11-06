@@ -193,16 +193,29 @@
       and menu_name like '%빵%';
 
 -- 29번. tbl_category 테이블에서 상위 카테고리 코드가 1번 또는 2번인 카테고리의 카테고리명과 상위 카테고리 코드를 조회하세요.
-    select *
+    select category_name,
+           category_code
     from tbl_category
-    where ref_category_code in(1,2);
+    where category_code in(1,2);
 -- 30번. tbl_menu 테이블에서 주문 불가능하거나(orderable_status = 'N'), 가격이 10,000원 미만인 메뉴 중 메뉴명이 '빵', '떡', '찜' 중 하나로 끝나는 메뉴를 조회하세요. (여러 조건 조합)
     select *
     from tbl_menu
-    where orderable_status = 'N'
-      and menu_price < 10000
-      and (
-               menu_name like '%빵'
-            or menu_name like '%떡'
-            or menu_name like '%찜'
-        );
+    where (orderable_status = 'N'
+      or menu_price < 10000)
+     and (menu_name like '%빵%'
+     or menu_name like '%떡%'
+     or menu_name like '%찜%');
+
+
+select * from EMPLOYEE
+select * from DEPARTMENT
+
+/* 부서명이 회계관리부인 사람들의 명단을 뽑아보시오 */
+
+select b.EMP_NAME from DEPARTMENT a
+join EMPLOYEE b
+on a.DEPT_ID = b.DEPT_CODE
+where b.DEPT_CODE = 'D2'
+
+select * from EMPLOYEE
+select * from DEPARTMENT

@@ -323,3 +323,4 @@ WHERE (orderable_status = 'N' OR price < 10000)
         OR menu_name LIKE '%떡'
         OR menu_name LIKE '%찜'
       );
+S

@@ -56,3 +56,9 @@ SELECT CONCAT('홍',' ','길동') AS 'full name'; -- 띄어쓰기도 문자열
 
 SELECT * FROM tbl_category;
 
+SELECT *
+FROM tbl_menu
+WHERE menu_price >= 10000
+  AND menu_price <= 25000
+ORDER BY menu_price ASC;
+

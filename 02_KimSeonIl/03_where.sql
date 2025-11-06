@@ -16,7 +16,7 @@ SELECT menu_name, menu_price, orderable_status  -- 3
 -- 이름이 붕어빵초밥인 메뉴 조회
 SELECT *  -- 3
   FROM tbl_menu                                 -- 1
- where menu_name = '붕어빵초밥'                   -- 2
+ where menu_name = '붕어빵초밥'    ;               -- 2
 
 -- 메뉴 가격이 13000인 메뉴의 메뉴명, 가격을 가격 내림 차순으로 조회
 SELECT *

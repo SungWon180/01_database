@@ -1,9 +1,9 @@
 /* 06_JOIN
    - 두 개 이상의 테이블을 관련있는 컬럼을 통해 결합
-   */
-
-   /*1. INNER JOIN
-     - 두테이블의 교집합을 반환
+   */a
+aaa
+   aa/*1. INNER JOIN
+     a- 두테이블의 교집합을 반환
      - ON 키워드 ; JOIN에 사용할 두 테이블의 컬럼을 명시
     */
 
@@ -14,17 +14,17 @@ SELECT * FROM tbl_category;
 
 -- INNER JOIN(ANSI)
 /* JOIN은 두 테이블에서 지정된 칼럼 값이 같은 행들의 결합 만들어진 큰 테이블 */
-SELECT a.menu_name, a.menu_price, b.category_name
-FROM tbl_menu a
-INNER JOIN tbl_category b
-    ON a.category_code = b.category_code;
+# SELECT a.menu_name AS '메뉴', a.menu_price AS '가격', b.category_name AS '카테고리'
+# FROM tbl_menu a
+# INNER JOIN tbl_category b
+#     ON a.category_code = b.category_code;
 
 /* ORACLE 방식 JOIN (권장 X) */
  SELECT a.menu_name, a.category_code,a.menu_price, b.category_name
  FROM tbl_menu a, tbl_category b
  WHERE a.category_code = b.category_code;
 
-/* practice 계정으로 변경 후 실습 */
+/* p    ractice 계정으로 변경 후 실습 */
 SELECT * FROM employee;
 SELECT * FROM department;
 
@@ -33,6 +33,7 @@ FROM employee e
 JOIN department d
     ON e.DEPT_CODE = d.DEPT_ID
 WHERE e.EMP_ID < 210;
+
 
 
 /* 2.LEFT [OUTER] JOIN
@@ -47,11 +48,19 @@ FROM employee; -- 23행
 SELECT dept_id, dept_title
 FROM department; -- 9행
 
+-- 이너조인
+SELECT e.dept_code, e.emp_name, d.dept_id, d.dept_title
+FROM employee e
+INNER JOIN department d
+ON e.dept_code = d.dept_id;
+
+
 -- INNER JOIN시 : 하동운, 이오리가 결과 포함  X
 -- LEFT OUTER JOIN : 하동운, 이오리 결과 포함 O
 SELECT *
 FROM employee e
-RIGHT JOIN department d ON e.dept_code = d.dept_id;
+RIGHT JOIN department d ON e.dept_code = d.dept_id
+;
 
 
 
@@ -114,4 +123,31 @@ SELECT *
 FROM tbl_menu a
 JOIN tbl_category b
 USING(category_code);
+
+-- DEPT_CODE
+SELECT  *
+ FROM employee;
+
+-- DEPT_ID
+SELECT *
+FROM department;
+
+
+SELECT *
+FROM employee e
+LEFT JOIN department d on e.dept_code = d.dept_id;
+
+
+SELECT *
+FROM employee e
+LEFT JOIN department d ON e.dept_code = d.dept_id;
+
+
+SELECT e.dept_code, e.emp_name, d.dept_title
+FROM employee e
+INNER JOIN department d on e.dept_code = d.DEPT_ID;
+/*
+ employee = dept_code
+ department = dept_id
+ */
 
