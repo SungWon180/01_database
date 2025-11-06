@@ -1341,206 +1341,194 @@
       <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
     </schema>
     <user id="556" parent="1" name="swcamp"/>
-    <table id="557" parent="555" name="tbl_category">
+    <table id="557" parent="555" name="tb1">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
+    </table>
+    <table id="558" parent="555" name="tb2">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
+    </table>
+    <table id="559" parent="555" name="tbl_category">
       <Comment>카테고리</Comment>
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
     </table>
-    <table id="558" parent="555" name="tbl_menu">
+    <table id="560" parent="555" name="tbl_menu">
       <Comment>메뉴</Comment>
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
     </table>
-    <table id="559" parent="555" name="tbl_order">
+    <table id="561" parent="555" name="tbl_order">
       <Comment>주문</Comment>
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
     </table>
-    <table id="560" parent="555" name="tbl_order_menu">
+    <table id="562" parent="555" name="tbl_order_menu">
       <Comment>주문별메뉴</Comment>
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
     </table>
-    <table id="561" parent="555" name="tbl_payment">
+    <table id="563" parent="555" name="tbl_payment">
       <Comment>결제</Comment>
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
     </table>
-    <table id="562" parent="555" name="tbl_payment_order">
+    <table id="564" parent="555" name="tbl_payment_order">
       <Comment>결제별주문</Comment>
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
     </table>
-    <table id="563" parent="555" name="tbl_temp">
+    <table id="565" parent="555" name="tbl_temp">
       <Comment>임시테이블</Comment>
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_uca1400_ai_ci</CollationName>
     </table>
-    <column id="564" parent="557" name="category_code">
+    <check id="566" parent="557" name="CONSTRAINT_1">
+      <NameSurrogate>1</NameSurrogate>
+      <Predicate>`col1` in (&apos;Y&apos;,&apos;N&apos;)</Predicate>
+    </check>
+    <column id="567" parent="557" name="pk">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <column id="568" parent="557" name="fk">
+      <Position>2</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <column id="569" parent="557" name="col1">
+      <Position>3</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <index id="570" parent="557" name="PRIMARY">
+      <ColNames>pk</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="571" parent="557" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <check id="572" parent="558" name="CONSTRAINT_1">
+      <NameSurrogate>1</NameSurrogate>
+      <Predicate>`col1` in (&apos;Y&apos;,&apos;N&apos;)</Predicate>
+    </check>
+    <column id="573" parent="558" name="pk">
+      <AutoIncrement>15</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <column id="574" parent="558" name="change_fk">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>decimal(10)|0s</StoredType>
+    </column>
+    <column id="575" parent="558" name="col1">
+      <Position>3</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <index id="576" parent="558" name="PRIMARY">
+      <ColNames>pk</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="577" parent="558" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="578" parent="559" name="category_code">
       <AutoIncrement>13</AutoIncrement>
       <Comment>카테고리코드</Comment>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="565" parent="557" name="category_name">
+    <column id="579" parent="559" name="category_name">
       <Comment>카테고리명</Comment>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(30)|0s</StoredType>
     </column>
-    <column id="566" parent="557" name="ref_category_code">
+    <column id="580" parent="559" name="ref_category_code">
       <Comment>상위카테고리코드</Comment>
       <Position>3</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <foreign-key id="567" parent="557" name="fk_ref_category_code">
+    <foreign-key id="581" parent="559" name="fk_ref_category_code">
       <ColNames>ref_category_code</ColNames>
       <RefColNames>category_code</RefColNames>
       <RefTableName>tbl_category</RefTableName>
     </foreign-key>
-    <index id="568" parent="557" name="PRIMARY">
+    <index id="582" parent="559" name="PRIMARY">
       <ColNames>category_code</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="569" parent="557" name="fk_ref_category_code">
+    <index id="583" parent="559" name="fk_ref_category_code">
       <ColNames>ref_category_code</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="570" parent="557" name="PRIMARY">
+    <key id="584" parent="559" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="571" parent="558" name="menu_code">
+    <column id="585" parent="560" name="menu_code">
       <AutoIncrement>22</AutoIncrement>
       <Comment>메뉴코드</Comment>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="572" parent="558" name="menu_name">
+    <column id="586" parent="560" name="menu_name">
       <Comment>메뉴명</Comment>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(30)|0s</StoredType>
     </column>
-    <column id="573" parent="558" name="menu_price">
+    <column id="587" parent="560" name="menu_price">
       <Comment>메뉴가격</Comment>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="574" parent="558" name="category_code">
+    <column id="588" parent="560" name="category_code">
       <Comment>카테고리코드</Comment>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="575" parent="558" name="orderable_status">
+    <column id="589" parent="560" name="orderable_status">
       <Comment>주문가능상태</Comment>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>char(1)|0s</StoredType>
     </column>
-    <foreign-key id="576" parent="558" name="fk_category_code">
+    <foreign-key id="590" parent="560" name="fk_category_code">
       <ColNames>category_code</ColNames>
       <RefColNames>category_code</RefColNames>
       <RefTableName>tbl_category</RefTableName>
     </foreign-key>
-    <index id="577" parent="558" name="PRIMARY">
-      <ColNames>menu_code</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="578" parent="558" name="fk_category_code">
-      <ColNames>category_code</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="579" parent="558" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="580" parent="559" name="order_code">
-      <AutoIncrement>1</AutoIncrement>
-      <Comment>주문코드</Comment>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>int(11)|0s</StoredType>
-    </column>
-    <column id="581" parent="559" name="order_date">
-      <Comment>주문일자</Comment>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>varchar(8)|0s</StoredType>
-    </column>
-    <column id="582" parent="559" name="order_time">
-      <Comment>주문시간</Comment>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StoredType>varchar(8)|0s</StoredType>
-    </column>
-    <column id="583" parent="559" name="total_order_price">
-      <Comment>총주문금액</Comment>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StoredType>int(11)|0s</StoredType>
-    </column>
-    <index id="584" parent="559" name="PRIMARY">
-      <ColNames>order_code</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="585" parent="559" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="586" parent="560" name="order_code">
-      <Comment>주문코드</Comment>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>int(11)|0s</StoredType>
-    </column>
-    <column id="587" parent="560" name="menu_code">
-      <Comment>메뉴코드</Comment>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>int(11)|0s</StoredType>
-    </column>
-    <column id="588" parent="560" name="order_amount">
-      <Comment>주문수량</Comment>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StoredType>int(11)|0s</StoredType>
-    </column>
-    <foreign-key id="589" parent="560" name="fk_order_menu_order_code">
-      <ColNames>order_code</ColNames>
-      <RefColNames>order_code</RefColNames>
-      <RefTableName>tbl_order</RefTableName>
-    </foreign-key>
-    <foreign-key id="590" parent="560" name="fk_order_menu_menu_code">
-      <ColNames>menu_code</ColNames>
-      <RefColNames>menu_code</RefColNames>
-      <RefTableName>tbl_menu</RefTableName>
-    </foreign-key>
     <index id="591" parent="560" name="PRIMARY">
-      <ColNames>order_code
-menu_code</ColNames>
+      <ColNames>menu_code</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="592" parent="560" name="fk_order_menu_menu_code">
-      <ColNames>menu_code</ColNames>
+    <index id="592" parent="560" name="fk_category_code">
+      <ColNames>category_code</ColNames>
       <Type>btree</Type>
     </index>
     <key id="593" parent="560" name="PRIMARY">
@@ -1548,77 +1536,77 @@ menu_code</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="594" parent="561" name="payment_code">
+    <column id="594" parent="561" name="order_code">
       <AutoIncrement>1</AutoIncrement>
-      <Comment>결제코드</Comment>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>int(11)|0s</StoredType>
-    </column>
-    <column id="595" parent="561" name="payment_date">
-      <Comment>결제일</Comment>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>varchar(8)|0s</StoredType>
-    </column>
-    <column id="596" parent="561" name="payment_time">
-      <Comment>결제시간</Comment>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StoredType>varchar(8)|0s</StoredType>
-    </column>
-    <column id="597" parent="561" name="payment_price">
-      <Comment>결제금액</Comment>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StoredType>int(11)|0s</StoredType>
-    </column>
-    <column id="598" parent="561" name="payment_type">
-      <Comment>결제구분</Comment>
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StoredType>varchar(6)|0s</StoredType>
-    </column>
-    <index id="599" parent="561" name="PRIMARY">
-      <ColNames>payment_code</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="600" parent="561" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="601" parent="562" name="order_code">
       <Comment>주문코드</Comment>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="602" parent="562" name="payment_code">
-      <Comment>결제코드</Comment>
+    <column id="595" parent="561" name="order_date">
+      <Comment>주문일자</Comment>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(8)|0s</StoredType>
+    </column>
+    <column id="596" parent="561" name="order_time">
+      <Comment>주문시간</Comment>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>varchar(8)|0s</StoredType>
+    </column>
+    <column id="597" parent="561" name="total_order_price">
+      <Comment>총주문금액</Comment>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <index id="598" parent="561" name="PRIMARY">
+      <ColNames>order_code</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="599" parent="561" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="600" parent="562" name="order_code">
+      <Comment>주문코드</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <column id="601" parent="562" name="menu_code">
+      <Comment>메뉴코드</Comment>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <foreign-key id="603" parent="562" name="fk_payment_order_order_code">
+    <column id="602" parent="562" name="order_amount">
+      <Comment>주문수량</Comment>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <foreign-key id="603" parent="562" name="fk_order_menu_order_code">
       <ColNames>order_code</ColNames>
       <RefColNames>order_code</RefColNames>
       <RefTableName>tbl_order</RefTableName>
     </foreign-key>
-    <foreign-key id="604" parent="562" name="fk_payment_order_payment_code">
-      <ColNames>order_code</ColNames>
-      <RefColNames>payment_code</RefColNames>
-      <RefTableName>tbl_payment</RefTableName>
+    <foreign-key id="604" parent="562" name="fk_order_menu_menu_code">
+      <ColNames>menu_code</ColNames>
+      <RefColNames>menu_code</RefColNames>
+      <RefTableName>tbl_menu</RefTableName>
     </foreign-key>
     <index id="605" parent="562" name="PRIMARY">
-      <ColNames>payment_code
-order_code</ColNames>
+      <ColNames>order_code
+menu_code</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="606" parent="562" name="fk_payment_order_payment_code">
-      <ColNames>order_code</ColNames>
+    <index id="606" parent="562" name="fk_order_menu_menu_code">
+      <ColNames>menu_code</ColNames>
       <Type>btree</Type>
     </index>
     <key id="607" parent="562" name="PRIMARY">
@@ -1626,25 +1614,103 @@ order_code</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="608" parent="563" name="temp_code">
+    <column id="608" parent="563" name="payment_code">
+      <AutoIncrement>1</AutoIncrement>
+      <Comment>결제코드</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <column id="609" parent="563" name="payment_date">
+      <Comment>결제일</Comment>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(8)|0s</StoredType>
+    </column>
+    <column id="610" parent="563" name="payment_time">
+      <Comment>결제시간</Comment>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>varchar(8)|0s</StoredType>
+    </column>
+    <column id="611" parent="563" name="payment_price">
+      <Comment>결제금액</Comment>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <column id="612" parent="563" name="payment_type">
+      <Comment>결제구분</Comment>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>varchar(6)|0s</StoredType>
+    </column>
+    <index id="613" parent="563" name="PRIMARY">
+      <ColNames>payment_code</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="614" parent="563" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="615" parent="564" name="order_code">
+      <Comment>주문코드</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <column id="616" parent="564" name="payment_code">
+      <Comment>결제코드</Comment>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>int(11)|0s</StoredType>
+    </column>
+    <foreign-key id="617" parent="564" name="fk_payment_order_order_code">
+      <ColNames>order_code</ColNames>
+      <RefColNames>order_code</RefColNames>
+      <RefTableName>tbl_order</RefTableName>
+    </foreign-key>
+    <foreign-key id="618" parent="564" name="fk_payment_order_payment_code">
+      <ColNames>order_code</ColNames>
+      <RefColNames>payment_code</RefColNames>
+      <RefTableName>tbl_payment</RefTableName>
+    </foreign-key>
+    <index id="619" parent="564" name="PRIMARY">
+      <ColNames>payment_code
+order_code</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="620" parent="564" name="fk_payment_order_payment_code">
+      <ColNames>order_code</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="621" parent="564" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="622" parent="565" name="temp_code">
       <AutoIncrement>1</AutoIncrement>
       <Comment>임시코드</Comment>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="609" parent="563" name="temp_email">
+    <column id="623" parent="565" name="temp_email">
       <Comment>이메일</Comment>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(30)|0s</StoredType>
     </column>
-    <index id="610" parent="563" name="PRIMARY">
+    <index id="624" parent="565" name="PRIMARY">
       <ColNames>temp_code</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="611" parent="563" name="PRIMARY">
+    <key id="625" parent="565" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

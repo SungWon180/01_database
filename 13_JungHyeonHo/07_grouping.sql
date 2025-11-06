@@ -118,14 +118,14 @@ SELECT
     AVG(a.menu_price) AS '평균금액'
 FROM
     tbl_menu a
-JOIN
+    JOIN
     tbl_category b
-ON
+    ON
     a.category_code = b.category_code
 GROUP BY
     a.category_code, b.category_name
-HAVING
-    AVG(a.menu_price) >= 8000
+HAVING -- where
+    AVG(a.menu_price) >= 8000 -- 묶인 컬럼(a.category_code, b.category_name)
 ORDER BY
     평균금액 ASC
 LIMIT 0,3;

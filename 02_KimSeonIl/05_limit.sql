@@ -28,6 +28,7 @@ LIMIT 1, 4;
 -- ROW_COUNT : 행의 개수
 
 
+
 -- 가장 저렴한 메뉴 TOP 4
 SELECT menu_code, menu_name, menu_price
 FROM tbl_menu

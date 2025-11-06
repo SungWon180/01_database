@@ -1,3 +1,5 @@
+
+
 /*
     두 개 이상의 테이블을 관련 있는 컬럼을 통해 결합
 
@@ -11,15 +13,31 @@ select
     menu_name,
     menu_price
 from tbl_menu;
+
 select * from tbl_category;
 
 -- inner join(ANSI)
 select a.menu_name, a.menu_price, b.category_name
 from tbl_menu a
 inner join tbl_category b
-on a.category_code = b.category_code
+on a.category_code = b.category_code;
+
+select * from DEPARTMENT;
+select * from EMPLOYEE;
+
+
+select a.DEPT_TITLE from DEPARTMENT a join EMPLOYEE b
+on a.DEPT_ID = b.DEPT_CODE
+where EMP_NAME = '선동일';
+
+select * from EMPLOYEE
+select * from DEPARTMENT
 
 -- join은 두 테이블에서 지정된 컬럼 값이 같은 행들의 결합으로 만들어진 큰 테이블
+
+
+
+    select * from
 
 /*
     practice 계정으로 변경 후 실습
@@ -116,6 +134,7 @@ from EMPLOYEE a
 left join EMPLOYEE b
 on a.MANAGER_ID = b.EMP_ID;
 
+
 -- swcamp
 /*
     using : join에 사용되는 컬럼이름이 같은 경우 사용 가능한 구문
@@ -130,3 +149,8 @@ join tbl_category b
 -- on a.category_code = b.category_code
 using(category_code);
 
+select * from EMPLOYEE order by EMP_NAME ;
+
+select * from EMPLOYEE where EMP_NAME not like '김%'
+
+select * from tbl_category

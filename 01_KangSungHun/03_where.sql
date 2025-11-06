@@ -131,7 +131,7 @@ FROM tbl_menu
 WHERE orderable_status = 'Y'
 OR category_code = 10;
 
--- 메뉴 가격이 5000원 미만, 20000원 이상인
+-- 메뉴 가격이 5000원 미만이거나 20000원 이상인
 -- 메뉴의 메뉴명, 메뉴가격을
 -- 메뉴 가격 오름 차순으로 조회
 
@@ -167,3 +167,111 @@ OR
     menu_price = 9000)
 AND
     menu_code > 6;
+
+SELECT *
+FROM tbl_menu
+WHERE menu_price >= 10000
+  AND menu_price <= 25000
+ORDER BY menu_price ASC;
+
+SELECT *
+FROM tbl_menu
+WHERE menu_price BETWEEN 10000 AND 25000
+ORDER BY menu_price ASC;
+
+SELECT *
+FROM tbl_menu
+WHERE
+    -- menu_price < 10000 OR menu_price > 25000
+    menu_price NOT BETWEEN 10000 AND 25000
+ORDER BY menu_price ASC; -- 위에 두 구문은 똑같은거다.
+
+/* LIKE 연산자
+ - 와일드카드를 이용해 문자열 패턴이 일치하면 조회
+ - % : 포함
+ - _ : 글자 개수
+ */
+
+-- %문자열 : 해당 문자열로 끝남
+SELECT tbl_menu.menu_name
+FROM tbl_menu;
+WHERE menu_name LIKE '%아메리카노';
+
+-- 문자열% : 해당 문자열로 시작
+SELECT tbl_menu.menu_name
+FROM tbl_menu
+WHERE menu_name LIKE '죽%';
+
+-- %문자열% : 해당 문자열이 포함(처음, 중간, 끝 관계 없음)
+SELECT tbl_menu.menu_name
+FROM tbl_menu
+WHERE menu_name LIKE '%마늘%';
+
+-- _ : 글자 개수
+
+SELECT tbl_menu.menu_name
+FROM tbl_menu
+WHERE menu_name LIKE '_____'; -- 다섯 글자 메뉴명만 조회
+
+SELECT tbl_menu.menu_name
+FROM tbl_menu
+WHERE menu_name LIKE '_마늘%'; -- 마늘 앞에 꼭 1글자, 뒤에는 관계없음
+
+-- NOT LIKE : 문자열 패턴이 일치하지 않는 데이터만 조회
+
+SELECT tbl_menu.menu_name
+FROM tbl_menu
+WHERE menu_name NOT LIKE '_마늘%'; -- 문자열 패턴이 일치하지 않는 데이터만 조회
+
+/*
+ _, % 와일드카드 사용 시
+ 문자열인지, 와일드카드 인지 구분해서 사용하는 방법
+ 예) sun_di@gready.com -> ____ 앞에 세글자 + 언더바의 데이터를 찾고싶을 때
+ 1) ESCAPE OPTION -> 앞에 #을 붙이면 된다 예를들면 #_ <- 이러면 언더바는 와일드카드가 아닌 문자열로 인식
+ 2) \(백슬래시) ESCAFE 문자 -> 앞에 \을 붙이면 된다. 예) \_
+ */
+
+SELECT *
+FROM tbl_temp
+
+/* IN / NOT IN
+   - 찾는 값이 () 안에 있으면 결과에 포함
+   == OR 연산을 연달아 작성하는 효과
+*/
+SELECT *
+FROM tbl_menu
+WHERE category_code = 4
+OR category_code = 5
+OR category_code = 6
+OR category_code = 10
+ORDER BY category_code ASC;
+
+
+SELECT *
+FROM tbl_menu
+WHERE category_code IN (4,5,6,10);
+
+-- NOT : 부정
+SELECT *
+FROM tbl_menu
+WHERE category_code NOT IN (4,5,6,10);
+
+/* NULL 관련 연산
+   - NULL == 빈칸 (값x)
+    ---> 비교 연산이 불가능하다!
+*/
+
+SELECT *
+FROM tbl_category
+WHERE ref_category_code = NULL; -- 비교 연산 불가
+
+-- IS NULL : 해당 컬럼의 값이 NULL(빈칸)이면 TRUE -> 결과 포함
+
+SELECT *
+FROM tbl_category
+WHERE ref_category_code IS NULL; -- 빈칸인 것들만 조회
+
+SELECT *
+FROM tbl_category
+WHERE ref_category_code IS NOT NULL; -- 빈칸인 것들만 조회
+

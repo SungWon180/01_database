@@ -11,7 +11,6 @@ SELECT
     EMP_NAME
 FROM
     employee;
-
 -- 3. 201번 사번의 사번 및 이름 조회
 
 SELECT
@@ -144,7 +143,6 @@ WHERE
     EMP_NAME LIKE '%하%';
 
 -- 15. 'J2'직급이거나 'J7'직급인 직원들 중 급여가 200만원 이상인 직원의 이름, 급여 조회
-
 SELECT
     EMP_NAME,
     SALARY

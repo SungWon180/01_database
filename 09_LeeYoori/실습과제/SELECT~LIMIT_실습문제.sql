@@ -96,3 +96,9 @@
 -- 17. 중복된 급여 범위를 제거하고 급여 조회
     select distinct SALARY
     from EMPLOYEE;
+
+-- 18. 사원들의 이름을 사전 순서대로 정렬하고 상위 10명 조회
+    select *
+    from EMPLOYEE
+    order by EMP_NAME
+    limit 10;
