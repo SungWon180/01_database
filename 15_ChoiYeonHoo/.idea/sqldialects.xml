@@ -13,7 +13,16 @@
     <file url="file://$PROJECT_DIR$/09_set_operators.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/10_dml.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/11_transaction.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/12_datatype.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/13_ddl.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/14_constraints.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/15_bulit_in_function.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/16_view.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/17_index.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/Example/20251105_SET_OPERATORS까지.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/Example/DAY3_Question_ChoiYeonhoo.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/Example/DAY4_Question_ChoiYeonhoo.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/Example/DAY5_Question_ChoiYeonhoo.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/Example/SELECT_LIMIT실습문제.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/Example/SELECT~WHERE_실습문제.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/Example/employee.sql" dialect="MariaDB" />
