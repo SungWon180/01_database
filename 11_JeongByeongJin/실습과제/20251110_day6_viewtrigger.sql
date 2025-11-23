@@ -221,3 +221,83 @@ FROM EMPLOYEE
 WHERE EMP_ID = 200;
 
 SELECT * FROM salary_history;
+
+
+
+/*
+Q1. View 생성하기
+students 테이블 생성
+student_id (INT, PRIMARY KEY)
+name (VARCHAR)
+class (VARCHAR)
+grades 테이블 생성
+grade_id (INT, PRIMARY KEY)
+student_id (INT, FOREGIN KEY)
+subject (VARCHAR)
+grade (CHAR)
+students 와 grades 를 조인하여 과목별로 정렬하여 학생들의 이름, 반, 성적을 보여주는
+뷰를 생성하세요.
+1단계 : create table
+2단계 : 데이터 insert
+3단계 : create view
+4단계 : select * from view
+*/
+
+DROP TABLE students;
+DROP TABLE grades;
+
+CREATE TABLE students(
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    class VARCHAR(50));
+
+CREATE TABLE grades(
+    grade_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    subject VARCHAR(50),
+    grade CHAR(2),
+    FOREIGN KEY (student_id) REFERENCES students (student_id)
+    ) ENGINE=INNODB;
+
+SELECT * FROM students;
+SELECT * FROM grades;
+
+INSERT INTO students (name, class)
+VALUES  ('유관순', 'A'),
+        ('신사임당', 'B'),
+        ('홍길동', 'A');
+
+INSERT INTO grades (student_id, subject, grade)
+VALUES (1, '과학', 'A'),
+       (1, '수학', 'B'),
+       (2, '과학', 'B'),
+       (2, '수학', 'C'),
+       (3, '과학', 'B'),
+       (3, '수학', 'A');
+
+CREATE VIEW IF NOT EXISTS students_grades AS
+    SELECT s.name, s.class, g.subject, g.grade
+    FROM students s
+    JOIN grades g ON(s.student_id = g.student_id);
+
+SELECT *
+FROM student_grades;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
